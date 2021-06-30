@@ -66,7 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5EN-pg-f7o">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5EN-pg-f7o">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,6 +116,9 @@
                                                     <state key="normal" title="*" image="retweet-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="xzu-iN-oiJ" eventType="touchUpInside" id="XX7-Qg-qFH"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2U-t8-Dqf">
                                                     <rect key="frame" x="249" y="209" width="38" height="30"/>
@@ -123,6 +126,9 @@
                                                     <state key="normal" title="*" image="favor-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="xzu-iN-oiJ" eventType="touchUpInside" id="w9B-a3-bQw"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-7R-AUv">
                                                     <rect key="frame" x="332" y="209" width="38" height="30"/>
