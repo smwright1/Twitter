@@ -70,6 +70,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="bfW-L5-IJ4">
+                                    <rect key="frame" x="0.0" y="298.66666828502309" width="390" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="250" id="xzu-iN-oiJ" customClass="TweetCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="250"/>
@@ -152,6 +156,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="bfW-L5-IJ4" id="41h-VW-rzw"/>
                         <outlet property="tableView" destination="5EN-pg-f7o" id="4zT-gi-cis"/>
                     </connections>
                 </viewController>
