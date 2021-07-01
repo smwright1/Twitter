@@ -30,6 +30,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self fetchTweets];
     
@@ -76,7 +77,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.arrayOfTweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,17 +95,19 @@
     NSDate *date = [formatter dateFromString:tweet.createdAtString];
     
     cell.profileImageView.image = [UIImage imageWithData:urlData];
+    cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.height / 2;
+    cell.profileImageView.layer.masksToBounds = YES;
+    
     cell.nameLabel.text = tweet.user.name;
     cell.usernameLabel.text = [NSString stringWithFormat:@"@%@ · %@", tweet.user.screenName, tweet.createdAtString];
     cell.tweetLabel.text = tweet.text;
+    
+    cell.replyButton.tintColor = [UIColor systemGrayColor];
     [cell.retweetButton setTitle:[NSString stringWithFormat:@"%d", tweet.retweetCount] forState:UIControlStateNormal];
-    if (tweet.retweeted) {
-        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
-    }
+    cell.retweetButton.tintColor = [UIColor systemGrayColor];
     [cell.favoriteButton setTitle:[NSString stringWithFormat:@"%d", tweet.favoriteCount] forState:UIControlStateNormal];
-    if (tweet.favorited) {
-        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
-    }
+    cell.favoriteButton.tintColor = [UIColor systemGrayColor];
+    cell.messageButton.tintColor = [UIColor systemGrayColor];
     
     return cell;
 }
