@@ -13,6 +13,8 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "ComposeViewController.h"
+#import "DateTools.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -37,6 +39,9 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    UIImage *image = [UIImage imageNamed:@"TwitterLogoBlue"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
 }
 
 - (void) fetchTweets {
@@ -92,14 +97,20 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-    NSDate *date = [formatter dateFromString:tweet.createdAtString];
+    
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    NSString *dateString = tweet.createdAtString;
+    NSDate *date = [formatter dateFromString:dateString];
+    NSString *formattedDateString = date.timeAgoSinceNow;
     
     cell.profileImageView.image = [UIImage imageWithData:urlData];
     cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.height / 2;
     cell.profileImageView.layer.masksToBounds = YES;
     
     cell.nameLabel.text = tweet.user.name;
-    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@ · %@", tweet.user.screenName, tweet.createdAtString];
+    cell.usernameLabel.text = [NSString stringWithFormat:@"@%@ · %@", tweet.user.screenName, formattedDateString];
     cell.tweetLabel.text = tweet.text;
     
     cell.replyButton.tintColor = [UIColor systemGrayColor];
@@ -108,6 +119,10 @@
     [cell.favoriteButton setTitle:[NSString stringWithFormat:@"%d", tweet.favoriteCount] forState:UIControlStateNormal];
     cell.favoriteButton.tintColor = [UIColor systemGrayColor];
     cell.messageButton.tintColor = [UIColor systemGrayColor];
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = UIColor.systemGray5Color;
+    cell.selectedBackgroundView = backgroundView;
     
     return cell;
 }
@@ -120,9 +135,17 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   UINavigationController *navigationController = [segue destinationViewController];
-   ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-   composeController.delegate = self;
+    if ([[segue destinationViewController] class] == [UINavigationController class]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    else if ([[segue destinationViewController] class] == [DetailsViewController class]) {
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        detailsViewController.tweet = self.arrayOfTweets[indexPath.row];
+    }
 }
 
 @end

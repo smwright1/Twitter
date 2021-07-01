@@ -76,23 +76,26 @@
 -(void)refreshData{
     [self.retweetButton setTitle:[NSString stringWithFormat: @"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
     if (self.tweet.retweeted) {
-        [self.retweetButton setImage: [UIImage systemImageNamed:@"arrow.2.squarepath"] forState:UIControlStateNormal];
         self.retweetButton.tintColor = [UIColor systemGreenColor];
         self.retweetButton.titleLabel.textColor = [UIColor systemGreenColor];
+        self.favoriteButton.titleLabel.textColor = [UIColor systemRedColor];
     }
     else {
-        [self.retweetButton setImage: [UIImage systemImageNamed:@"arrow.2.squarepath"] forState:UIControlStateNormal];
         self.retweetButton.tintColor = [UIColor systemGrayColor];
+        self.retweetButton.titleLabel.textColor = [UIColor systemGrayColor];
+        
     }
     [self.favoriteButton setTitle:[NSString stringWithFormat: @"%d", self.tweet.favoriteCount] forState:UIControlStateNormal];
     if (self.tweet.favorited) {
         [self.favoriteButton setImage: [UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
         self.favoriteButton.tintColor = [UIColor systemRedColor];
         self.favoriteButton.titleLabel.textColor = [UIColor systemRedColor];
+        // try tying to state of button
     }
     else {
         [self.favoriteButton setImage: [UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
         self.favoriteButton.tintColor = [UIColor systemGrayColor];
+        self.favoriteButton.titleLabel.textColor = [UIColor systemGrayColor];
     }
 }
 
