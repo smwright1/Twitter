@@ -40,8 +40,12 @@
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-//    UIImage *image = [UIImage imageNamed:@"TwitterLogoBlue"];
-//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+    UIView *backView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    UIImageView *titleImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TwitterLogoBlueSmall"]];
+    titleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    titleImageView.frame = CGRectMake((-1 * titleImageView.frame.size.width)/2, (-1 * titleImageView.frame.size.height) / 2,titleImageView.frame.size.width , titleImageView.frame.size.height);
+    [backView addSubview:titleImageView];
+    self.navigationItem.titleView = backView;
 }
 
 - (void) fetchTweets {
