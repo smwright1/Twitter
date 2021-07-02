@@ -118,7 +118,7 @@
     if (self.tweet.retweeted) {
         [self.retweetButton setImage: [UIImage systemImageNamed:@"arrow.2.squarepath"] forState:UIControlStateNormal];
         self.retweetButton.tintColor = [UIColor systemGreenColor];
-        self.retweetButton.titleLabel.textColor = [UIColor systemGreenColor];
+//        self.retweetButton.titleLabel.textColor = [UIColor systemGreenColor];
     }
     else {
         [self.retweetButton setImage: [UIImage systemImageNamed:@"arrow.2.squarepath"] forState:UIControlStateNormal];
@@ -128,7 +128,7 @@
     if (self.tweet.favorited) {
         [self.favoriteButton setImage: [UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
         self.favoriteButton.tintColor = [UIColor systemRedColor];
-        self.favoriteButton.titleLabel.textColor = [UIColor systemRedColor];
+//        self.favoriteButton.titleLabel.textColor = [UIColor systemRedColor];
     }
     else {
         [self.favoriteButton setImage: [UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];

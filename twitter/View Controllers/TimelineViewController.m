@@ -40,8 +40,8 @@
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    UIImage *image = [UIImage imageNamed:@"TwitterLogoBlue"];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+//    UIImage *image = [UIImage imageNamed:@"TwitterLogoBlue"];
+//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
 }
 
 - (void) fetchTweets {
@@ -60,7 +60,6 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-        sleep(1);
         [self.activityIndicator stopAnimating];
         [self.refreshControl endRefreshing];
     }];
