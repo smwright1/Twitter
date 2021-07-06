@@ -55,6 +55,8 @@ Here's a walkthrough of implemented user stories:
 
 ![Twitter-Demo](https://github.com/smwright1/Twitter/blob/master/Twitter%20Demo.gif)
 
+![Twitter-Demo-2](https://github.com/smwright1/Twitter/blob/master/Twitter%20Demo%202.gif)
+
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
